@@ -53,7 +53,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: 'http://localhost:1337/'
+    baseURL: 'https://sewyn-back.herokuapp.com/'
   },
 
   /*
