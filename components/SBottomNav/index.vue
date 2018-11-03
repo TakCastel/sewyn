@@ -1,0 +1,30 @@
+<template>
+  <v-bottom-nav
+    v-show="$vuetify.breakpoint.xsOnly"
+    :value="true"
+    color="grey darken-4"
+    fixed
+  >
+    <v-btn
+      flat
+      to="/"
+      value="index">
+      <span>Accueil</span>
+      <v-icon>home</v-icon>
+    </v-btn>
+    <v-btn
+      flat
+      to="/forum"
+      value="forum">
+      <span>Forum</span>
+      <v-icon>chat_bubble</v-icon>
+    </v-btn>
+    <v-btn
+      flat
+      to="profile"
+      value="profile">
+      <span>Profile</span>
+      <v-icon>person</v-icon>
+    </v-btn>
+  </v-bottom-nav>
+</template>
