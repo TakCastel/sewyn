@@ -37,7 +37,6 @@ export default {
         })
         commit('connectUser', response)
         this.$router.push('/')
-        location.reload()
       } catch (error) {
         console.log('An error occurred:', error);
       }
@@ -47,7 +46,6 @@ export default {
       commit('disconnectUser')
       localStorage.clear()
       this.$router.push('/')
-      location.reload()
     }
   },
 

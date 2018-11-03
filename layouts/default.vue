@@ -46,7 +46,7 @@
               large 
               color="primary">more_vert</v-icon>
           </v-btn>
-          <v-list>
+          <v-list dense>
             <v-list-tile
               v-for="(item, index) in items"
               :key="index"

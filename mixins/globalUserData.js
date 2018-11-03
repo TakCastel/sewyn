@@ -8,6 +8,12 @@ const userData = {
       auth: state => state.auth.isAuthenticated,
     }),
   },
+
+  watch: {
+    permission: function (value) {
+      this.permission = value
+    }
+  }
 }
 
 export default userData

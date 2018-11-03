@@ -9,6 +9,7 @@
       <v-flex
         sm8
         xs12>
+        <h1>Accueil</h1>
         <v-layout 
           justify-start 
           row>
@@ -29,7 +30,7 @@
           </v-card-title>
           <v-divider/>
           <v-card-text>
-            <p class="text">{{ article.text }}</p>
+            <span class="text">{{ article.text }}</span>
           </v-card-text>
           <v-divider v-if="permission === 'root'"/>
           <v-card-actions v-if="permission === 'root'">
