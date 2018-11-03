@@ -58,7 +58,22 @@
       </div>
     </v-toolbar>
     <v-content>
-      <nuxt/>
+      <v-container
+        fluid
+        fill-height
+        grid-list-lg>
+        <v-layout 
+          justify-center
+          align-center
+          row 
+          wrap>
+          <v-flex
+            sm8
+            xs12>
+            <nuxt/>
+          </v-flex>
+        </v-layout>
+      </v-container>
     </v-content>
     <s-bottom-nav/>
     <v-footer

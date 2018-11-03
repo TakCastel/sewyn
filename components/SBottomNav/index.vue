@@ -2,7 +2,6 @@
   <v-bottom-nav
     v-show="$vuetify.breakpoint.xsOnly"
     :value="true"
-    color="grey darken-4"
     fixed
   >
     <v-btn

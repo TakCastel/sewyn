@@ -28,6 +28,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~/assets/style/custom.scss',
     '~/assets/style/app.styl'
   ],
 
@@ -52,7 +53,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: 'https://blooming-castle-68040.herokuapp.com/'
+    baseURL: 'http://localhost:1337/'
   },
 
   /*
