@@ -16,7 +16,7 @@
       </v-toolbar-items>
       <v-spacer/>
       <div 
-        v-if="!isAuthenticated"
+        v-if="!auth"
         class="logger">
         <v-btn 
           color="transparent"
@@ -32,7 +32,7 @@
       <div 
         v-else 
         class="logger">
-        <span class="text-truncate text-no-wrap ">Bonjour {{ user ? user.username : 'Anonyme' }}</span>
+        <span class="text-truncate text-no-wrap ">Bonjour {{ username }}</span>
         <v-menu 
           bottom 
           left>
@@ -64,37 +64,32 @@
     <v-footer
       class="hidden-xs-and-down">
       © 2018
+      <nuxt-link to="/policies">Mentions légales</nuxt-link>
     </v-footer>
   </v-app>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import roletype from '@/mixins/roletype'
+import userData from '@/mixins/globalUserData'
+
 import SBottomNav from '@/components/SBottomNav'
 
 export default {
   components: {
     SBottomNav
   },
-  middleware: [
-    'connected'
-  ],
+
   mixins: [
-    'roletype'
+    userData
   ],
+
   data: () => ({
     items: [
       { title: 'Paramètres avancés' },
       { title: 'Déconnexion' }
     ]
   }),
-  computed: {
-    ...mapState({
-      isAuthenticated: state => state.auth.isAuthenticated,
-      user : state => state.auth.session.user  
-    })
-  },
+
   methods: {
     handleClickMenu (menu) {
       switch (menu) {
@@ -113,5 +108,8 @@ export default {
 <style lang="scss" scoped>
   .v-footer {
     padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 </style>

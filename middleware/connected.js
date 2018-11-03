@@ -1,7 +1,6 @@
-export default function ({ store }) {
-  const jwtToken = store.state.auth.jwtToken
+export default function ({ store, redirect, commit }) {
+  const jwtToken = store.state.auth.session.jwt
   if (jwtToken) {
-    console.log('il y a un token')
-    // store.dispatch('')
+    return redirect('/')
   }
 }

@@ -12,7 +12,7 @@
         <v-layout 
           justify-start 
           row>
-          <s-modal-form v-if="roleType === 'root'"/>
+          <s-modal-form v-if="permission === 'root'"/>
         </v-layout>
       </v-flex>
       <v-flex
@@ -31,8 +31,8 @@
           <v-card-text>
             <p class="text">{{ article.text }}</p>
           </v-card-text>
-          <v-divider v-if="roleType === 'root'"/>
-          <v-card-actions v-if="roleType === 'root'">
+          <v-divider v-if="permission === 'root'"/>
+          <v-card-actions v-if="permission === 'root'">
             <v-spacer/>
             <s-modal-form
               :content="article"
@@ -51,12 +51,16 @@
 import { mapState } from 'vuex'
 import SModalForm from '@/components/SModalForm'
 import SActionDelete from '@/components/SActionDelete'
+import userData from '@/mixins/globalUserData'
 
 export default {
   components: {
     SModalForm,
     SActionDelete
   },
+  mixins: [
+    userData
+  ],
   computed: {
     ...mapState({
       news: state => state.newsfeed.items

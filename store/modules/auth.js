@@ -4,6 +4,7 @@ export default {
     session: JSON.parse(localStorage.getItem('sewyn_session')) || {
       jwt: null,
       user: {
+        username: 'Anonymous',
         role: {
           type: 'guest'
         }
@@ -20,7 +21,7 @@ export default {
           email: formData.email,
           password: formData.password
         })
-        commit('connectUser', response)        
+        commit('connectUser', response)   
         this.$router.push('/')
       } catch (error) {
         console.log('An error occurred:', error);
@@ -36,6 +37,7 @@ export default {
         })
         commit('connectUser', response)
         this.$router.push('/')
+        location.reload()
       } catch (error) {
         console.log('An error occurred:', error);
       }
@@ -45,20 +47,18 @@ export default {
       commit('disconnectUser')
       localStorage.clear()
       this.$router.push('/')
+      location.reload()
     }
   },
 
   mutations: {
     connectUser (state, response) {
-      // Change state
       state.token = response.jwt
       state.user = response.user
       state.isAuthenticated = true
 
-      // Save token as default
       this.$axios.setToken(response.jwt, 'Bearer')
 
-      // Save in local storage
       localStorage.setItem('sewyn_session', JSON.stringify(response))
     },
 
@@ -66,10 +66,6 @@ export default {
       state.token = null
       state.user = null
       state.isAuthenticated = false
-    }
-  },
-
-  getters: {
-    getRole: state => state.session.user.role.type
+    },
   }
 }

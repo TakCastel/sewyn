@@ -91,6 +91,10 @@
 
 <script>
 export default {
+  middleware: [
+    'connected'
+  ],
+  
   data: () => ({
     isRegistered: false,
     valid: true,

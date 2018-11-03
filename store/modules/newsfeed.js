@@ -34,7 +34,7 @@ export default {
             text: data.text
           })
         }
-        dispatch('getContent')
+        dispatch('getNewsFeed')
       } catch (error) {
         console.log('An error occurred:', error)
       }
@@ -44,7 +44,7 @@ export default {
       this.$axios.$delete(`/news/${newsId}`)
       .then(response => {
         // Handle success.
-        dispatch('getContent')
+        dispatch('getNewsFeed')
       })
       .catch(error => {
         // Handle error.

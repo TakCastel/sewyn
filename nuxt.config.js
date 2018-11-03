@@ -35,6 +35,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/axios',
     '@/plugins/vuetify'
   ],
 
@@ -51,7 +52,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: 'http://localhost:1337/'
+    baseURL: 'https://blooming-castle-68040.herokuapp.com/'
   },
 
   /*
