@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-btn
-      v-if="$store.state.authenticate.user.role.type === 'root'"
       color="primary"
       outline
       small

@@ -4,7 +4,7 @@ export default {
   },
 
   actions: {
-    async getContent ({ commit }) {
+    async getNewsFeed ({ commit }) {
       const result = await this.$axios.$get('/news', {
         params: {
           _sort: 'createdAt:desc' // Generates http://localhost:1337/posts?_sort=createdAt:desc
@@ -41,7 +41,6 @@ export default {
     },
 
     deleteNews ({ dispatch }, newsId) {
-      console.log(newsId)
       this.$axios.$delete(`/news/${newsId}`)
       .then(response => {
         // Handle success.

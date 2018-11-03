@@ -1,12 +1,12 @@
 import Vuex from 'vuex'
 
-import authentication from './modules/authentication'
+import auth from './modules/auth'
 import newsfeed from './modules/newsfeed'
 
 const createStore = () => {
   return new Vuex.Store({
     modules: {
-      authentication,
+      auth,
       newsfeed,
     },
 

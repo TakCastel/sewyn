@@ -32,7 +32,7 @@
       <div 
         v-else 
         class="logger">
-        <span class="text-truncate text-no-wrap ">Bonjour {{ user.username }}</span>
+        <span class="text-truncate text-no-wrap ">Bonjour {{ user ? user.username : 'Anonyme' }}</span>
         <v-menu 
           bottom 
           left>
@@ -70,22 +70,29 @@
 
 <script>
 import { mapState } from 'vuex'
+import roletype from '@/mixins/roletype'
 import SBottomNav from '@/components/SBottomNav'
 
 export default {
   components: {
     SBottomNav
   },
+  middleware: [
+    'connected'
+  ],
+  mixins: [
+    'roletype'
+  ],
   data: () => ({
     items: [
       { title: 'Paramètres avancés' },
-      { title: 'Déconnection' }
+      { title: 'Déconnexion' }
     ]
   }),
   computed: {
     ...mapState({
-      isAuthenticated: state => state.authentication.isAuthenticated,
-      user : state => state.authentication.user  
+      isAuthenticated: state => state.auth.isAuthenticated,
+      user : state => state.auth.session.user  
     })
   },
   methods: {

@@ -12,7 +12,7 @@
         <v-layout 
           justify-start 
           row>
-          <s-modal-form/>
+          <s-modal-form v-if="roleType === 'root'"/>
         </v-layout>
       </v-flex>
       <v-flex
@@ -31,8 +31,8 @@
           <v-card-text>
             <p class="text">{{ article.text }}</p>
           </v-card-text>
-          <v-divider/>
-          <v-card-actions>
+          <v-divider v-if="roleType === 'root'"/>
+          <v-card-actions v-if="roleType === 'root'">
             <v-spacer/>
             <s-modal-form
               :content="article"
@@ -62,8 +62,8 @@ export default {
       news: state => state.newsfeed.items
     })
   },
-  created () {
-    this.$store.dispatch('getContent')
+  mounted () {
+    this.$store.dispatch('getNewsFeed')
   },
 }
 </script>

@@ -1,8 +1,14 @@
 export default {
   state: {
-    isAuthenticated: false,
-    jwtToken: localStorage.getItem('s_jwt') || null,
-    user: null
+    isAuthenticated: localStorage.getItem('sewyn_session') ? true : false,
+    session: JSON.parse(localStorage.getItem('sewyn_session')) || {
+      jwt: null,
+      user: {
+        role: {
+          type: 'guest'
+        }
+      }
+    }
   },
 
   actions: {
@@ -22,7 +28,6 @@ export default {
     },
 
     async authenticateUser ({ commit }, formData) {
-      console.log(formData)
       try {
         let response
         response = await this.$axios.$post('/auth/local', {
@@ -36,7 +41,8 @@ export default {
       }
     },
 
-    logOut () {
+    logOut ({ commit }) {
+      commit('disconnectUser')
       localStorage.clear()
       this.$router.push('/')
     }
@@ -44,14 +50,26 @@ export default {
 
   mutations: {
     connectUser (state, response) {
+      // Change state
       state.token = response.jwt
       state.user = response.user
       state.isAuthenticated = true
-      localStorage.setItem('s_jwt', response.jwt)
+
+      // Save token as default
+      this.$axios.setToken(response.jwt, 'Bearer')
+
+      // Save in local storage
+      localStorage.setItem('sewyn_session', JSON.stringify(response))
+    },
+
+    disconnectUser (state) {
+      state.token = null
+      state.user = null
+      state.isAuthenticated = false
     }
   },
 
   getters: {
-
+    getRole: state => state.session.user.role.type
   }
 }

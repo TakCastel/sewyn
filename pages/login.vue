@@ -13,16 +13,17 @@
         sm8 
         xs12>
         <v-card>
-          <v-card-title primary-title>
-            <h2 v-if="!isRegistered">Création d'un compte</h2>
-            <h2 v-else>Connexion</h2>
-          </v-card-title>
-          <v-divider/>
-          <v-card-text>
-            <v-form 
-              ref="form" 
-              v-model="valid" 
-              lazy-validation>
+          <v-form 
+            ref="form" 
+            v-model="valid"
+            lazy-validation 
+            @submit.prevent="handleSubmit">
+            <v-card-title primary-title>
+              <h2 v-if="!isRegistered">Création d'un compte</h2>
+              <h2 v-else>Connexion</h2>
+            </v-card-title>
+            <v-divider/>
+            <v-card-text>
               <v-text-field
                 v-model="form.username"
                 :rules="form.usernameRules"
@@ -51,37 +52,37 @@
                 outline
                 @click:append="form.passwordShow = !form.passwordShow"
               />
-            </v-form>
-          </v-card-text>
-          <v-card-actions>
-            <v-container
-              grid-list-md>
-              <v-layout 
-                row 
-                wrap>
-                <v-flex xs12>
-                  <v-btn
-                    block 
-                    large
-                    color="primary"
-                    @click="handleSubmit">
-                    {{ !isRegistered ? 'Créer' : 'Se connecter' }}
-                  </v-btn>
-                </v-flex>
-                <v-flex xs12>
-                  <v-btn
-                    v-show="!isRegistered"
-                    outline
-                    block 
-                    large
-                    color="primary"
-                    @click.native="isRegistered = true">
-                    J'ai déjà un compte
-                  </v-btn>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-card-actions>
+            </v-card-text>
+            <v-card-actions>
+              <v-container
+                grid-list-md>
+                <v-layout 
+                  row 
+                  wrap>
+                  <v-flex xs12>
+                    <v-btn
+                      block 
+                      large
+                      color="primary"
+                      type="submit">
+                      {{ !isRegistered ? 'Créer' : 'Se connecter' }}
+                    </v-btn>
+                  </v-flex>
+                  <v-flex xs12>
+                    <v-btn
+                      v-show="!isRegistered"
+                      outline
+                      block 
+                      large
+                      color="primary"
+                      @click.native="isRegistered = true">
+                      J'ai déjà un compte
+                    </v-btn>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-actions>
+          </v-form>
         </v-card>
       </v-flex>
     </v-layout>
