@@ -1,24 +1,24 @@
 <template>
   <div>
     <h1>Forum</h1>
-    <s-layout-topic
-      :topics="topics"/>
+    <s-layout-category
+      :content="content"/>
   </div>
 </template>
 
 
 <script>
 import { mapState } from 'vuex'
-import SLayoutTopic from '@/components/SLayoutTopic'
+import SLayoutCategory from '@/components/SLayoutCategory'
 
 export default {
   components: {
-    SLayoutTopic
+    SLayoutCategory
   },
 
   computed: {
     ...mapState({
-      topics: state => state.forum.topics
+      content: state => state.forum.content
     })
   },
 

@@ -1,5 +1,22 @@
+html {
+  background: #202020;
+}
+
 #app.application {
-  // background:#131313;
-  // color:#fff;
+  background:#181818;
+  color:#fff;
   // all app custom css here
+  .theme--dark {
+    &.v-bottom-nav {
+      background-color: #202020;
+      box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.25)
+    }
+    &.v-card {
+      background-color: #292929;
+    }
+    .v-list {
+      background: #2f2f2f;
+      color: #fff;
+    }
+  }
 }

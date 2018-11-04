@@ -71,7 +71,8 @@
                     block 
                     large
                     color="primary"
-                    @click.native="isRegistered = true">
+                    @click.native="isRegistered = !isRegistered">
+                    {{ !isRegistered ? 'Créer' : 'Se connecter' }}
                     J'ai déjà un compte
                   </v-btn>
                 </v-flex>

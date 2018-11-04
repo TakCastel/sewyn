@@ -18,16 +18,19 @@
         <v-card-title primary-title>
           <div>
             <h3 class="headline mb-0">{{ article.title }}</h3>
+            <small>Publié le {{ formatDate(article.createdAt) }}</small>
           </div>
         </v-card-title>
         <v-divider light/>
-        <v-card-text>
+        <v-card-text class="grey darken-4">
           <span class="text">{{ article.text }}</span>
         </v-card-text>
         <v-divider 
           v-if="permission === 'root'" 
           light/>
-        <v-card-actions v-if="permission === 'root'">
+        <v-card-actions 
+          v-if="permission === 'root'"
+          class="grey darken-4">
           <v-spacer/>
           <s-modal-form
             :content="article"
@@ -43,9 +46,12 @@
 
 <script>
 import { mapState } from 'vuex'
+
+import userData from '@/mixins/globalUserData'
+import toDate from '@/mixins/toDateTime'
+
 import SModalForm from '@/components/SModalForm'
 import SActionDelete from '@/components/SActionDelete'
-import userData from '@/mixins/globalUserData'
 
 export default {
   components: {
@@ -53,7 +59,8 @@ export default {
     SActionDelete
   },
   mixins: [
-    userData
+    userData,
+    toDate
   ],
   computed: {
     ...mapState({

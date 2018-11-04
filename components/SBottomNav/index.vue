@@ -5,25 +5,25 @@
     fixed
   >
     <v-btn
-      flat
-      to="/"
-      value="index">
-      <span>Accueil</span>
-      <v-icon>home</v-icon>
-    </v-btn>
-    <v-btn
-      flat
-      to="/forum"
-      value="forum">
-      <span>Forum</span>
-      <v-icon>chat_bubble</v-icon>
-    </v-btn>
-    <v-btn
-      flat
-      to="profile"
-      value="profile">
-      <span>Profile</span>
-      <v-icon>person</v-icon>
+      v-for="button in buttons"
+      :key="button.value"
+      :to="button.path"
+      :value="button.value"
+      flat>
+      <span>{{ button.title }}</span>
+      <v-icon>{{ button.icon }}</v-icon>
     </v-btn>
   </v-bottom-nav>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    buttons: [
+      { path: '/', value: 'accueil', title: 'Accueil', icon: 'home' },
+      { path: '/forum', value: 'forum', title: 'Forum', icon: 'chat_bubble' },
+      { path: '/profile', value: 'profile', title: 'Profile', icon: 'person' }
+    ]
+  })
+}
+</script>

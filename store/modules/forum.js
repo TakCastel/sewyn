@@ -1,18 +1,18 @@
 export default {
   state: {
-    topics: []
+    content: []
   },
 
   actions: {
-    async getTopics ({ commit }) {
-      const result = await this.$axios.$get('/topics', {
+    async getContent ({ commit }) {
+      const result = await this.$axios.$get('/categories', {
         params: {
           _sort: 'createdAt:desc' // Generates http://localhost:1337/posts?_sort=createdAt:desc
         }
       })
       .then(result => {
         // Handle success.
-        commit('setTopics', result)
+        commit('setContent', result)
       })
       .catch(error => {
         // Handle error.
@@ -22,8 +22,8 @@ export default {
   },
 
   mutations: {
-    setTopics (state, topics) {
-      state.topics = topics
+    setContent (state, content) {
+      state.content = content
     }
   },
 

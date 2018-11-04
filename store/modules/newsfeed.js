@@ -12,7 +12,7 @@ export default {
       })
       .then(result => {
         // Handle success.
-        commit('setContent', result)
+        commit('setNewsFeed', result)
       })
       .catch(error => {
         // Handle error.
@@ -54,7 +54,7 @@ export default {
   },
 
   mutations: {
-    setContent (state, items) {
+    setNewsFeed (state, items) {
       state.items = items
     }
   },

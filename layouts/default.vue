@@ -59,6 +59,7 @@
     </v-toolbar>
     <v-content>
       <v-container
+        class="pb-5"
         fluid
         fill-height
         grid-list-lg>
